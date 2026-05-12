@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>从动态规划理解算法中的状态设计 | 王同学的技术博客</title>
+    <meta
+      name="description"
+      content="一篇关于动态规划、状态设计和算法学习方法的技术博客。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="返回主页">
+        <span class="brand-mark">W</span>
+        <span>王同学</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html#profile">简介</a>
+        <a href="index.html#interests">方向</a>
+        <a href="index.html#projects">记录</a>
+        <a href="blog.html" aria-current="page">博客</a>
+      </nav>
+    </header>
+
+    <main class="article-layout">
+      <article class="article">
+        <header class="article-header">
+          <a class="back-link" href="index.html#blog">返回博客入口</a>
+          <p class="eyebrow">算法思考 · 2026 年 5 月</p>
+          <h1>从动态规划理解算法中的状态设计</h1>
+          <p class="article-summary">
+            动态规划常被总结为“写出状态转移方程”，但在实际学习中，我发现真正困难的部分
+            往往是决定状态应该包含什么信息，以及哪些信息可以被舍弃。
+          </p>
+        </header>
+
+        <section>
+          <h2>1. 为什么动态规划容易卡住</h2>
+          <p>
+            我最初学习动态规划时，经常把重点放在公式本身：如果能写出
+            <code>dp[i]</code> 或 <code>dp[i][j]</code> 的转移，就认为自己理解了题目。
+            但做题多了以后会发现，转移方程只是结果，状态定义才是起点。如果状态定义不合适，
+            后面的公式会变得很别扭，甚至需要额外讨论很多特殊情况。
+          </p>
+          <p>
+            因此，我现在更倾向于先问一个问题：为了得到当前答案，我必须知道过去的哪些信息？
+            如果某些历史细节不会影响未来决策，就应该把它们从状态中删掉。
+          </p>
+        </section>
+
+        <section>
+          <h2>2. 状态是对历史的压缩</h2>
+          <p>
+            动态规划的核心不是枚举所有历史，而是用一个较小的状态表示“对未来仍然有用的历史”。
+            例如在背包问题中，我们并不关心物品被选择的完整顺序，只关心已经考虑到第几个物品、
+            当前容量是多少。这个压缩过程让问题从指数级搜索变成可以接受的表格计算。
+          </p>
+          <p>
+            从这个角度看，好的状态设计需要满足两个条件：第一，它足够表达未来转移需要的信息；
+            第二，它不携带无关细节。前者保证正确性，后者保证复杂度可控。
+          </p>
+        </section>
+
+        <section>
+          <h2>3. 我常用的分析顺序</h2>
+          <p>
+            面对一个新的动态规划问题，我会按照四步来拆解。先明确答案是什么，再定义状态表示
+            一个子问题；接着考虑最后一步决策从哪里来，最后补充边界条件和遍历顺序。
+          </p>
+          <div class="note-panel">
+            <p><strong>我的检查清单：</strong></p>
+            <ul>
+              <li>状态的含义是否能用一句话说明清楚。</li>
+              <li>转移时是否只依赖已经计算过的状态。</li>
+              <li>初始状态是否覆盖了最小规模的问题。</li>
+              <li>时间和空间复杂度是否来自状态数量与转移次数。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. AI Agent 在学习中的作用</h2>
+          <p>
+            AI Agent 可以帮助我快速生成代码、检查边界条件、提供另一种解释方式。但我也发现，
+            如果完全依赖 AI 给出的结论，自己很容易跳过状态设计的推理过程。对于算法学习来说，
+            这个过程恰恰是最重要的。
+          </p>
+          <p>
+            所以我更适合把 AI 当作“讨论对象”和“代码审查助手”：先自己写出状态定义和转移思路，
+            再让 AI 帮忙找漏洞、补测试、优化表达。这样既能提高效率，也不会失去个人理解。
+          </p>
+        </section>
+
+        <section>
+          <h2>5. 小结</h2>
+          <p>
+            动态规划的学习重点不只是记住题型，而是训练一种抽象能力：从复杂历史中提取对未来
+            有用的信息，并用状态表达出来。这个能力不仅适用于算法题，也适用于工程中的缓存设计、
+            搜索剪枝和问题建模。
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 王同学 · Technical Blog</p>
+      <p class="footer-note">Built with HTML, CSS and GitHub Pages.</p>
+    </footer>
+  </body>
+</html>

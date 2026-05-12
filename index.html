@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>王同学的个人主页</title>
+    <meta
+      name="description"
+      content="计算机方向学生的个人主页，展示学习方向、项目记录与技术博客。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="返回主页">
+        <span class="brand-mark">W</span>
+        <span>王同学</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#profile">简介</a>
+        <a href="#interests">方向</a>
+        <a href="#projects">记录</a>
+        <a href="#blog">博客</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Computer Science Portfolio</p>
+          <h1 id="hero-title">在算法、AI 与工程实践之间建立自己的学习路径</h1>
+          <p class="hero-text">
+            这里记录我的课程学习、技术实验和阶段性思考。当前主页用于展示个人简介、
+            学习方向、项目记录，以及本次课程大作业要求的第一篇技术博客。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="blog.html">阅读技术博客</a>
+            <a class="button secondary" href="#projects">查看学习记录</a>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img src="assets/hero-study.png" alt="包含电脑、算法笔记与学习桌面的插画" />
+        </figure>
+      </section>
+
+      <section id="profile" class="section split-section">
+        <div>
+          <p class="section-label">Profile</p>
+          <h2>个人简介</h2>
+        </div>
+        <div class="section-body">
+          <p>
+            我是一名计算机相关方向的学生，正在系统学习算法基础、数据结构、
+            AI 辅助编程和软件工程实践。相比单纯完成代码，我更关注问题如何被抽象、
+            如何设计可验证的解法，以及如何把学习过程沉淀成可以复用的知识。
+          </p>
+          <p>
+            你可以将这里替换为自己的姓名、学院、专业、年级、研究兴趣和联系方式。
+          </p>
+        </div>
+      </section>
+
+      <section id="interests" class="section">
+        <div class="section-heading">
+          <p class="section-label">Interests</p>
+          <h2>学习方向与技术兴趣</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="card-index">01</span>
+            <h3>算法与数据结构</h3>
+            <p>
+              关注动态规划、图论、搜索和复杂度分析，尝试从状态设计和问题建模角度理解算法。
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="card-index">02</span>
+            <h3>AI 辅助编程</h3>
+            <p>
+              使用 AI Agent 进行需求拆解、代码实现、测试验证和文档整理，同时保留人工审查。
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="card-index">03</span>
+            <h3>工程化表达</h3>
+            <p>
+              练习将学习笔记、项目过程和问题复盘写成结构清楚的技术文章。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section split-section">
+        <div>
+          <p class="section-label">Records</p>
+          <h2>项目与学习记录</h2>
+        </div>
+        <div class="timeline" aria-label="学习记录">
+          <article class="timeline-item">
+            <p class="timeline-date">2026.05</p>
+            <h3>个人主页与技术博客</h3>
+            <p>
+              使用 HTML、CSS 和 GitHub Pages 搭建静态个人主页，完成课程大作业的展示入口。
+            </p>
+          </article>
+          <article class="timeline-item">
+            <p class="timeline-date">2026.04</p>
+            <h3>算法基础学习</h3>
+            <p>
+              梳理常见算法思想，将题目拆成状态、转移、边界和复杂度四个部分进行分析。
+            </p>
+          </article>
+          <article class="timeline-item">
+            <p class="timeline-date">持续更新</p>
+            <h3>课程实验与技术笔记</h3>
+            <p>
+              后续可以补充课程项目、开源贡献、论文阅读或个人实验记录。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="blog" class="section blog-preview">
+        <div class="section-heading">
+          <p class="section-label">Blog</p>
+          <h2>技术博客</h2>
+        </div>
+        <a class="blog-card" href="blog.html">
+          <span class="blog-tag">算法思考</span>
+          <h3>从动态规划理解算法中的状态设计</h3>
+          <p>
+            这篇文章从个人学习体验出发，讨论为什么动态规划的难点不只是写转移方程，
+            而是识别“状态”如何承载历史信息。
+          </p>
+          <span class="read-more">阅读全文</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 王同学 · Personal Homepage</p>
+      <p class="footer-note">Built with HTML, CSS and GitHub Pages.</p>
+    </footer>
+  </body>
+</html>
