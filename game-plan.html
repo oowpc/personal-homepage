@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>类《亿万僵尸》游戏开发计划 | 王浦丞的个人主页</title>
+    <meta
+      name="description"
+      content="2D/2.5D 僵尸潮生存 RTS、塔防与基地建造游戏开发计划。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="返回主页">
+        <span class="brand-mark">W</span>
+        <span>王浦丞</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html#profile">简介</a>
+        <a href="index.html#interests">方向</a>
+        <a href="index.html#projects">记录</a>
+        <a href="blog.html">博客</a>
+      </nav>
+    </header>
+
+    <main class="article-layout">
+      <article class="article">
+        <header class="article-header">
+          <a class="back-link" href="index.html#projects">返回学习记录</a>
+          <p class="eyebrow">游戏开发 · Unity · 2026 年 5 月</p>
+          <h1>类《亿万僵尸》游戏开发计划</h1>
+          <p class="article-summary">
+            这是一个 2D/2.5D 僵尸潮生存 RTS、塔防与基地建造项目计划。目标是先完成可玩的垂直切片 Demo，
+            再逐步扩展为更完整的原创策略游戏。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="assets/zombie-game-plan.docx" download>下载 Word 文档</a>
+            <a class="button secondary" href="index.html">返回主页</a>
+          </div>
+        </header>
+
+        <section>
+          <h2>1. 项目定位</h2>
+          <p>
+            项目核心体验是让玩家在有限资源和持续威胁下建设基地、扩张防线、训练单位，并抵御越来越强的尸潮。
+            设计上可以借鉴“基地建设 + 生存压力 + 大规模敌潮”的类型框架，但美术、UI、名称、剧情、关卡、
+            具体数值和资源结构都需要保持原创。
+          </p>
+          <div class="note-panel">
+            <p><strong>首版目标：</strong></p>
+            <ul>
+              <li>使用 Unity 和 C# 开发。</li>
+              <li>先完成 1 张地图、1 种士兵、1 种僵尸、3-5 个建筑和 1 套波次系统。</li>
+              <li>建议用 4-8 周完成可玩的 Demo，再考虑随机地图、科技树和更多单位。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>2. 核心玩法循环</h2>
+          <p>
+            第一版循环应保持简单清晰：探索地图，收集资源，建设基地，训练单位，抵御尸潮，利用波次间隙扩张和升级，
+            最后通过一波大尸潮检验整体布局和资源管理能力。
+          </p>
+          <p>
+            这个循环的重点不是堆叠大量内容，而是让玩家快速理解“为什么要扩张”“为什么要修防线”“为什么会失败”。
+            只要核心压力和反馈成立，后续系统才值得继续扩展。
+          </p>
+        </section>
+
+        <section>
+          <h2>3. MVP 范围</h2>
+          <p>
+            最小可玩版本只需要做到“能玩、能输、能赢”。地图可以先使用固定小地图和网格占位；建筑只保留基地、墙、
+            防御塔、兵营和一种资源建筑；单位先做一种基础远程士兵；敌人先做一种普通僵尸；胜负条件可以设定为基地被毁失败，
+            撑过 10-15 分钟胜利。
+          </p>
+          <p>
+            暂时不做完整科技树、复杂随机地图、战役、多职业单位、特殊感染者和排行榜。这样可以避免范围过大，
+            也方便尽早验证游戏是否真的有紧张感和可重复游玩性。
+          </p>
+        </section>
+
+        <section>
+          <h2>4. 技术选型</h2>
+          <p>
+            推荐使用 Unity 2022 LTS 或 Unity 6 LTS，主要语言为 C#。视角可以选择 2D 俯视或 2.5D 等距，
+            这样能降低美术成本，也适合展示大量单位。地图采用网格系统，方便处理建筑占位、寻路阻挡和资源判断。
+          </p>
+          <p>
+            数据配置可以先使用 ScriptableObject，后续再根据需要导出为 JSON 或 CSV。版本管理使用 Git，
+            便于回滚、分支开发和记录每个阶段的实现过程。
+          </p>
+        </section>
+
+        <section>
+          <h2>5. 系统拆分</h2>
+          <div class="note-panel">
+            <p><strong>优先实现的 P0 系统：</strong></p>
+            <ul>
+              <li>GridManager：维护地图格子、占用状态、可建造和可行走状态。</li>
+              <li>PlacementSystem：处理建筑预览、合法性检查、扣资源和放置建筑。</li>
+              <li>ResourceManager：管理资源库存、产出、消耗和维护成本。</li>
+              <li>UnitManager 与 CombatSystem：负责单位生成、移动、攻击、生命值和死亡回收。</li>
+              <li>PathfindingSystem 与 WaveManager：处理寻路、建筑阻挡更新、波次时间表和尸潮生成。</li>
+            </ul>
+          </div>
+          <p>
+            UIManager、TechSystem 和 SaveSystem 可以放在后续阶段。第一版应优先保证地图、建造、单位、战斗和波次能够闭环。
+          </p>
+        </section>
+
+        <section>
+          <h2>6. 技术难点</h2>
+          <p>
+            最大难点是大量敌人的寻路性能。如果每个僵尸每帧独立运行 A*，敌人数量上来后很容易卡顿。
+            更合理的方案是使用 Flow Field 流场寻路，让同目标敌人共享方向场；建筑被放置或摧毁时，再局部更新网格和路径数据。
+          </p>
+          <p>
+            渲染方面，首版目标可以定为 200-500 个敌人同屏不卡。应使用对象池减少频繁创建和销毁，
+            控制 Animator 和复杂物理组件数量，并在后期考虑图集合批、GPU Instancing 或 ECS/DOTS。
+          </p>
+        </section>
+
+        <section>
+          <h2>7. 阶段计划</h2>
+          <p>
+            前 3 天完成玩法范围、技术方案、项目仓库和 Unity 空项目。第 1 周实现地图、摄像机、建造和资源扣除；
+            第 2 周实现士兵、僵尸、移动、攻击和死亡；第 3 周加入尸潮、墙、防御塔和胜负条件；
+            第 4 周补齐资源生产、兵营训练、资源栏和建筑栏，形成完整垂直切片 Demo。
+          </p>
+          <p>
+            第 5-6 周进行性能优化、音效、特效和数值调整；第 7-12 周再扩展多单位、多建筑、多僵尸和随机地图。
+          </p>
+        </section>
+
+        <section>
+          <h2>8. 风险与验收</h2>
+          <p>
+            主要风险包括范围过大、寻路性能差、美术成本高、数值难平衡、玩法缺少爽感和侵权风险。
+            应对策略是严格限制 MVP，早期做性能测试，先用占位资源验证玩法，建立表格化数值，并坚持原创表达。
+          </p>
+          <p>
+            首版成功标准可以概括为：玩家能快速理解目标，尸潮进攻有压迫感，扩张、防御和训练单位之间存在取舍，
+            500 个敌人同屏仍基本流畅，并且测试玩家愿意重开第二局。
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 王浦丞 · Game Plan</p>
+      <p class="footer-note">Built with HTML, CSS and GitHub Pages.</p>
+    </footer>
+  </body>
+</html>

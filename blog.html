@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>我的大模型使用经验 | 王浦丞的技术博客</title>
+    <meta
+      name="description"
+      content="一篇关于大模型使用经验的技术博客，记录在学习、编程和写作中的实践方法与反思。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="返回主页">
+        <span class="brand-mark">W</span>
+        <span>王浦丞</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html#profile">简介</a>
+        <a href="index.html#interests">方向</a>
+        <a href="index.html#projects">记录</a>
+        <a href="blog.html" aria-current="page">博客</a>
+      </nav>
+    </header>
+
+    <main class="article-layout">
+      <article class="article">
+        <header class="article-header">
+          <a class="back-link" href="index.html#blog">返回博客入口</a>
+          <p class="eyebrow">AI 工具 · 学习方法 · 2026 年 5 月</p>
+          <h1>我的大模型使用经验</h1>
+          <p class="article-summary">
+            大模型已经成为我学习和完成课程任务时常用的辅助工具。它最有价值的地方不是替我直接给出最终答案，
+            而是帮助我拆解问题、整理思路、发现遗漏，并把零散想法转化为更清晰的表达。
+          </p>
+        </header>
+
+        <section>
+          <h2>1. 如何把 Codex 部署在终端</h2>
+          <p>
+            严格来说，把 Codex 部署在终端并不是把一个大模型完整下载到本地运行，而是在电脑上安装 Codex CLI。
+            CLI 运行在本地终端中，可以读取当前项目、提出修改、编辑文件并执行必要命令；模型推理仍然通过 OpenAI
+            的服务完成。因此，它更像是一个接入到终端和代码仓库中的编程 Agent。
+          </p>
+          <p>
+            部署前需要先准备 Node.js 和 npm，因为官方推荐通过 npm 安装 Codex CLI。安装完成后，可以在终端中检查
+            <code>node -v</code> 和 <code>npm -v</code>，确认环境可用。之后执行
+            <code>npm install -g @openai/codex</code> 进行全局安装，再用 <code>codex --version</code>
+            检查命令是否安装成功。如果以后需要更新，也可以使用 <code>codex --upgrade</code>。
+          </p>
+          <p>
+            认证方式主要有两种：一种是运行 <code>codex --login</code>，在浏览器中完成 ChatGPT 账号登录；
+            另一种是在终端中配置 <code>OPENAI_API_KEY</code>。在 Windows PowerShell 中，可以临时设置
+            <code>$env:OPENAI_API_KEY="你的 API Key"</code>；在 macOS 或 Linux 中，可以使用
+            <code>export OPENAI_API_KEY="你的 API Key"</code>。实际使用时应避免把密钥写进公开仓库。
+          </p>
+          <p>
+            完成安装和登录后，进入项目目录再启动 Codex，例如先 <code>cd</code> 到代码仓库，然后运行
+            <code>codex</code>。这样 Codex 能看到当前目录下的文件结构，并根据项目中的说明文件工作。
+            如果仓库里有 <code>AGENTS.md</code>，可以把项目目标、代码规范、测试方式和注意事项写进去，
+            让 Codex 在修改代码时遵守这些约束。
+          </p>
+          <div class="note-panel">
+            <p><strong>我理解的终端 Codex 工作流程：</strong></p>
+            <ul>
+              <li>先进入项目目录，让 Codex 只围绕当前仓库工作。</li>
+              <li>用清楚的自然语言描述任务，例如“把博客主题改成大模型使用经验”。</li>
+              <li>让 Codex 读取文件、提出修改，并在需要时执行检查命令。</li>
+              <li>通过 Git diff 或页面预览检查结果，确认无误后再提交。</li>
+            </ul>
+          </div>
+          <p>
+            这种方式的优势是它直接嵌入开发环境，不需要在浏览器和编辑器之间反复复制代码。它能结合真实文件上下文
+            理解任务，也能把修改落实到具体文件中；同时，终端里的审批机制和 Git 记录可以帮助我保留控制权。
+            对课程项目来说，Codex 特别适合完成页面结构调整、文案润色、链接检查和 README 整理这类任务。
+          </p>
+        </section>
+
+        <section>
+          <h2>2. 我通常怎样使用大模型</h2>
+          <p>
+            在学习算法、完成网页作业或整理技术博客时，我会先把任务背景和目标告诉大模型，再让它帮助我拆分步骤。
+            例如做一个个人主页时，我不会只输入“帮我写网页”，而是说明页面需要包含个人简介、学习方向、项目记录、
+            博客入口和响应式布局。这样得到的结果更接近真实需求，也方便我逐项检查。
+          </p>
+          <p>
+            对我来说，大模型更像一个可以随时讨论的学习助手。它能快速给出方案，但方案是否合理仍然需要我自己判断。
+            如果直接复制结果，很容易忽略细节；如果把它当作讨论对象，就能在不断追问和修改中形成自己的理解。
+          </p>
+        </section>
+
+        <section>
+          <h2>3. 提问比答案更重要</h2>
+          <p>
+            使用大模型时，我最明显的体会是：问题描述越具体，回答越有参考价值。模糊的问题通常会得到宽泛的回答，
+            看起来完整，但很难直接使用。比较有效的做法是给出背景、限制条件、期望输出和检查标准。
+          </p>
+          <div class="note-panel">
+            <p><strong>我常用的提问方式：</strong></p>
+            <ul>
+              <li>先说明任务目标，例如“我要完成算法基础课程的个人主页作业”。</li>
+              <li>再说明约束条件，例如“只使用 HTML 和 CSS，不引入前端框架”。</li>
+              <li>最后说明输出形式，例如“请给出页面结构和需要检查的要点”。</li>
+            </ul>
+          </div>
+          <p>
+            这种提问方式能减少来回修改的成本，也能让我更清楚自己到底要解决什么问题。很多时候，写清楚提示词的过程，
+            本身就是重新理解任务的过程。
+          </p>
+        </section>
+
+        <section>
+          <h2>4. 在编程中的帮助</h2>
+          <p>
+            编程时，大模型对我帮助最大的是搭建初始结构和解释错误信息。比如写静态网页时，它可以根据课程要求生成
+            合理的 HTML 语义结构，并给出 CSS 的响应式布局思路。遇到样式错位、链接路径错误或代码报错时，
+            我也可以把现象和相关代码片段发给它，让它帮助定位可能原因。
+          </p>
+          <p>
+            但是我不会把大模型生成的代码直接视为正确答案。生成的代码可能存在不符合项目规范、命名不一致、
+            响应式细节不足等问题。因此我会重点检查三个方面：页面能否正常打开，链接和资源路径是否正确，
+            移动端显示是否有明显溢出。
+          </p>
+        </section>
+
+        <section>
+          <h2>5. 在学习中的帮助</h2>
+          <p>
+            学习算法时，我会让大模型把一个问题拆成状态定义、转移关系、边界条件和复杂度分析。这样做可以帮助我
+            避免只记代码模板，而是回到问题建模本身。对于不熟悉的概念，我也会要求它用例子解释，再自己尝试复述。
+          </p>
+          <p>
+            不过，大模型给出的解释有时会过于顺滑，容易让人产生“我已经懂了”的错觉。为了避免这种情况，我会让它
+            出一个类似小题，或者要求它指出某个思路可能失败的边界情况。只有自己能独立推一遍，才说明理解比较可靠。
+          </p>
+        </section>
+
+        <section>
+          <h2>6. 需要保持警惕的地方</h2>
+          <p>
+            大模型并不总是可靠。它可能编造不存在的资料，可能忽略题目中的限制，也可能给出看似合理但实际错误的代码。
+            因此，越是涉及事实、引用、计算结果和提交要求的内容，越不能只依赖模型回答。
+          </p>
+          <p>
+            我的做法是把大模型输出当作草稿，而不是最终结论。对于网页项目，我会实际打开页面检查；对于算法问题，
+            我会用样例和边界数据测试；对于文章内容，我会重新阅读并删掉不符合自己理解的表述。这样才能保证最终提交的
+            内容是我确认过的。
+          </p>
+        </section>
+
+        <section>
+          <h2>7. 小结</h2>
+          <p>
+            总体来看，大模型提高了我完成学习任务的效率，也让我更重视问题表达和过程检查。它适合用来启发思路、
+            生成初稿、解释错误和辅助复盘，但不适合代替独立判断。真正有效的使用方式，是让大模型参与学习过程，
+            同时由自己负责验证、取舍和最终表达。
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 王浦丞 · Technical Blog</p>
+      <p class="footer-note">Built with HTML, CSS and GitHub Pages.</p>
+    </footer>
+  </body>
+</html>
